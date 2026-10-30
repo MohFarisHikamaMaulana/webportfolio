@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="id" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moh. Faris Hikama Maulana - Personal Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0b0c10',
+                        cardBg: '#12141c',
+                        cardHover: '#1a1d29',
+                        accentBlue: '#3b82f6',
+                        accentPurple: '#8b5cf6',
+                        borderDark: '#232738'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0c10;
+            color: #e2e8f0;
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px -5px rgba(59, 130, 246, 0.15);
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 30px -2px rgba(139, 92, 246, 0.25);
+            border-color: rgba(139, 92, 246, 0.5);
+        }
+        .nav-glass {
+            background: rgba(18, 20, 28, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0c10;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-slate-200 antialiased min-h-screen flex flex-col justify-between selection:bg-accentBlue selection:text-white">
+
+    <!-- FLOATING NAVIGATION BAR (Guidebook Design Inspired) -->
+    <header class="fixed top-4 inset-x-0 z-50 flex justify-center px-4">
+        <nav class="nav-glass border border-borderDark/80 rounded-full px-4 py-2.5 flex items-center justify-between w-full max-w-4xl shadow-2xl transition-all duration-300">
+            <!-- Brand / Logo Badge -->
+            <a href="#hero" class="flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/60 hover:bg-slate-800 transition">
+                <span class="w-7 h-7 rounded-full bg-gradient-to-tr from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-xs">F</span>
+                <span class="font-bold text-sm tracking-tight text-white hidden sm:inline">Moh. Faris Hikama Maulana</span>
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-400">
+                <a href="#work" class="hover:text-white transition-colors py-1">Work</a>
+                <a href="#capabilities" class="hover:text-white transition-colors py-1">What I Can Do</a>
+                <a href="#about" class="hover:text-white transition-colors py-1">About</a>
+                <a href="#achievements" class="hover:text-white transition-colors py-1">Achievements</a>
+            </div>
+
+            <!-- CTA & Actions -->
+            <div class="flex items-center gap-2">
+                <a href="#contact" class="px-4 py-1.5 rounded-full bg-white text-slate-900 hover:bg-slate-200 font-semibold text-xs transition duration-200 shadow-md flex items-center gap-1.5">
+                    <span>Hire Me</span>
+                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+                
+                <!-- Mobile Menu Button Toggle -->
+                <button id="menu-btn" class="md:hidden p-2 text-slate-400 hover:text-white focus:outline-none">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Drawer Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black/80 backdrop-blur-md z-40 hidden flex-col justify-center items-center gap-6 text-lg font-medium text-slate-300 transition-opacity">
+        <button id="close-menu-btn" class="absolute top-6 right-6 p-3 text-slate-400 hover:text-white">
+            <i class="fa-solid fa-xmark text-2xl"></i>
+        </button>
+        <a href="#hero" class="hover:text-white transition mobile-link">Home</a>
+        <a href="#work" class="hover:text-white transition mobile-link">Work Gallery</a>
+        <a href="#capabilities" class="hover:text-white transition mobile-link">What I Can Do</a>
+        <a href="#about" class="hover:text-white transition mobile-link">About Me</a>
+        <a href="#achievements" class="hover:text-white transition mobile-link">Achievements</a>
+        <a href="#contact" class="hover:text-white transition mobile-link">Contact</a>
+    </div>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="container mx-auto px-4 pt-28 pb-16 max-w-5xl space-y-24">
+
+        <!-- HERO SECTION -->
+        <section id="hero" class="flex flex-col items-center text-center pt-8 md:pt-12">
+            <!-- Profile Avatar with Glow Container -->
+            <div class="relative group mb-8">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-40 group-hover:opacity-75 transition duration-500"></div>
+                <div class="relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-slate-700 bg-slate-900 flex items-center justify-center shadow-2xl">
+                    <img src="WhatsApp Image 2026-10-24 at 13.59.04.jpeg" 
+                         alt="Foto Profil" 
+                         class="w-full h-full object-cover object-top scale-105"
+                         onerror="this.src='https://placehold.co/400x400/12141c/ffffff?text=Faris+Hikama'">
+                </div>
+            </div>
+
+            <!-- Student Info Badges -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-xs font-medium text-slate-300 mb-4">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Active Student & Content Creator</span>
+            </div>
+
+            <!-- Title & Name -->
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-4">
+                Moh. Faris Hikama Maulana
+            </h1>
+            <p class="text-slate-400 max-w-2xl text-base sm:text-lg mb-6 leading-relaxed">
+                Mahasiswa <span class="text-blue-400 font-semibold">S1 Pendidikan Teknologi Informasi</span> (Unesa) • NIM: <span class="text-slate-200 font-medium">26050974054</span>. Passionate in Web Development, Database Management, and Minecraft Server Scripting.
+            </p>
+
+            <!-- Quick Action Buttons -->
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#work" class="px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition shadow-lg shadow-blue-500/20 flex items-center gap-2">
+                    <i class="fa-solid fa-code"></i>
+                    <span>Explore My Work</span>
+                </a>
+                <a href="#contact" class="px-6 py-3 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-medium text-sm transition flex items-center gap-2">
+                    <i class="fa-regular fa-paper-plane"></i>
+                    <span>Get In Touch</span>
+                </a>
+            </div>
+        </section>
+
+
+        <!-- WORK GALLERY SECTION -->
+        <section id="work" class="scroll-mt-24">
+            <div class="mb-8">
+                <span class="text-xs font-bold tracking-widest text-blue-400 uppercase">Selected Work</span>
+                <h2 class="text-3xl font-extrabold text-white mt-1">Work Gallery</h2>
+                <p class="text-slate-400 text-sm mt-1">A collection of systems, digital projects, Minecraft scripts, and technical work I've built.</p>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Project 1: Minecraft Scripting -->
+                <div class="bg-cardBg border border-borderDark rounded-2xl p-6 glow-hover transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-purple-950/60 text-purple-400 border border-purple-800/50">Minecraft Scripting & Plugin</span>
+                            <i class="fa-solid fa-cube text-slate-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Custom Server Skript & Script API</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Pengembangan logika server Minecraft Bedrock/Java menggunakan Bedrock Script API & Skript framework. Mencakup custom economy, mini-game handlers, dan automated server management.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-borderDark flex items-center justify-between">
+                        <div class="flex gap-2">
+                            <span class="text-[11px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Skript</span>
+                            <span class="text-[11px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">JS Script API</span>
+                        </div>
+                        <span class="text-xs text-slate-500 font-medium">Server System</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: Database Schema & SQL -->
+                <div class="bg-cardBg border border-borderDark rounded-2xl p-6 glow-hover transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-blue-950/60 text-blue-400 border border-blue-800/50">Database Engineering</span>
+                            <i class="fa-solid fa-database text-slate-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Relational Database & SQL Schema Design</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Perancangan skema basis data terstruktur, implementasi ERD, normalisasi, serta query SQL kompleks pada MariaDB/MySQL untuk pengelolaan data aplikasi akademik dan digital.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-borderDark flex items-center justify-between">
+                        <div class="flex gap-2">
+                            <span class="text-[11px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">SQL</span>
+                            <span class="text-[11px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">MariaDB</span>
+                            <span class="text-[11px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">ERD</span>
+                        </div>
+                        <span class="text-xs text-slate-500 font-medium">Backend / Data</span>
+                    </div>
+                </div>
+
+                <!-- Project 3: Web Application -->
+                <div class="bg-cardBg border border-borderDark rounded-2xl p-6 glow-hover transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-emerald-950/60 text-emerald-400 border border-emerald-800/50">Web Development</span>
+                            <i class="fa-solid fa-laptop-code text-slate-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Interactive Student & Gaming Web Portal</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Pengembangan antarmuka website responsif dengan tema modern dark-mode menggunakan HTML5, Tailwind CSS, dan JavaScript interaktif untuk showcase karya digital dan gaming.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-borderDark flex items-center justify-between">
+                        <div class="flex gap-2">
+                            <span class="text-[11px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">HTML/CSS</span>
+                            <span class="text-[11px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Tailwind</span>
+                            <span class="text-[11px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">JavaScript</span>
+                        </div>
+                        <span class="text-xs text-slate-500 font-medium">Frontend</span>
+                    </div>
+                </div>
+
+                <!-- Project 4: Content Creation & Multimedia -->
+                <div class="bg-cardBg border border-borderDark rounded-2xl p-6 glow-hover transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-amber-950/60 text-amber-400 border border-amber-800/50">Gaming Content</span>
+                            <i class="fa-solid fa-play text-slate-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Independent Gaming & Tech Video Content</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Produksi dan penyuntingan konten media digital independen seputar dunia gaming, tutorial modding, serta wawasan teknologi terapan dengan manajemen audio-visual yang baik.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-borderDark flex items-center justify-between">
+                        <div class="flex gap-2">
+                            <span class="text-[11px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Video Editing</span>
+                            <span class="text-[11px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Streaming</span>
+                        </div>
+                        <span class="text-xs text-slate-500 font-medium">Multimedia</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- WHAT I CAN DO SECTION (Guidebook Cards Layout) -->
+        <section id="capabilities" class="scroll-mt-24">
+            <div class="mb-8">
+                <span class="text-xs font-bold tracking-widest text-blue-400 uppercase">My Capabilities</span>
+                <h2 class="text-3xl font-extrabold text-white mt-1">What I Can Do</h2>
+                <p class="text-slate-400 text-sm mt-1">I combine technical problem-solving, digital skills, and coding logic to build reliable software and digital experiences.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Capability Card 1 -->
+                <div class="bg-cardBg border border-borderDark rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <span class="text-3xl font-black text-slate-600 block mb-4">01</span>
+                        <div class="w-12 h-12 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Software & Web Development</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Membangun sistem web interaktif, skrip logika terstruktur (Python, JS, Skript), serta mengimplementasikan modul fungsional yang mudah dirawat.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 pt-4 border-t border-borderDark/60">
+                        <span class="text-[11px] px-2 py-1 rounded bg-slate-800 text-slate-300">HTML/CSS</span>
+                        <span class="text-[11px] px-2 py-1 rounded bg-slate-800 text-slate-300">JavaScript</span>
+                        <span class="text-[11px] px-2 py-1 rounded bg-slate-800 text-slate-300">Python</span>
+                    </div>
+                </div>
+
+                <!-- Capability Card 2 -->
+                <div class="bg-cardBg border border-borderDark rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <span class="text-3xl font-black text-slate-600 block mb-4">02</span>
+                        <div class="w-12 h-12 rounded-xl bg-purple-600/20 text-purple-400 border border-purple-500/30 flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Database & System Modeling</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Merancang skema relasional basis data, melakukan pengujian query SQL, manipulasi data, dan integrasi backend secara konsisten.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 pt-4 border-t border-borderDark/60">
+                        <span class="text-[11px] px-2 py-1 rounded bg-slate-800 text-slate-300">SQL</span>
+                        <span class="text-[11px] px-2 py-1 rounded bg-slate-800 text-slate-300">MariaDB</span>
+                        <span class="text-[11px] px-2 py-1 rounded bg-slate-800 text-slate-300">Git / GitHub</span>
+                    </div>
+                </div>
+
+                <!-- Capability Card 3 -->
+                <div class="bg-cardBg border border-borderDark rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <span class="text-3xl font-black text-slate-600 block mb-4">03</span>
+                        <div class="w-12 h-12 rounded-xl bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-photo-film"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Content & Gaming Technicals</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Modding server game, optimasi performa game Bedrock/Java, serta pembuatan konten media digital independen dan penulisan dokumentasi teknis.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 pt-4 border-t border-borderDark/60">
+                        <span class="text-[11px] px-2 py-1 rounded bg-slate-800 text-slate-300">Minecraft Script API</span>
+                        <span class="text-[11px] px-2 py-1 rounded bg-slate-800 text-slate-300">Video Editing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech Tools Badge Grid -->
+            <div class="mt-8 bg-cardBg border border-borderDark rounded-2xl p-6">
+                <h4 class="text-xs font-bold tracking-wider text-slate-400 uppercase mb-4">Tools & Technologies I Use</h4>
+                <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3">
+                    <div class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-borderDark">
+                        <i class="fa-brands fa-python text-yellow-400 text-lg"></i>
+                        <span class="text-xs font-medium text-slate-200">Python</span>
+                    </div>
+                    <div class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-borderDark">
+                        <i class="fa-solid fa-database text-blue-400 text-lg"></i>
+                        <span class="text-xs font-medium text-slate-200">SQL / MariaDB</span>
+                    </div>
+                    <div class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-borderDark">
+                        <i class="fa-brands fa-html5 text-orange-500 text-lg"></i>
+                        <span class="text-xs font-medium text-slate-200">HTML & CSS</span>
+                    </div>
+                    <div class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-borderDark">
+                        <i class="fa-brands fa-js text-yellow-300 text-lg"></i>
+                        <span class="text-xs font-medium text-slate-200">JavaScript</span>
+                    </div>
+                    <div class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-borderDark">
+                        <i class="fa-brands fa-github text-white text-lg"></i>
+                        <span class="text-xs font-medium text-slate-200">Git / GitHub</span>
+                    </div>
+                    <div class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 border border-borderDark">
+                        <i class="fa-solid fa-cube text-emerald-400 text-lg"></i>
+                        <span class="text-xs font-medium text-slate-200">Bedrock API</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ABOUT ME SECTION -->
+        <section id="about" class="scroll-mt-24">
+            <div class="bg-cardBg border border-borderDark rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+                <div class="flex flex-col lg:flex-row gap-8 items-start">
+                    
+                    <!-- Left Column: Details & Stats -->
+                    <div class="w-full lg:w-2/3 space-y-6">
+                        <div>
+                            <span class="text-xs font-bold tracking-widest text-blue-400 uppercase">About Me</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+                                Problem Solver & Tech Enthusiast
+                            </h2>
+                        </div>
+
+                        <!-- Stats Banner -->
+                        <div class="grid grid-cols-3 gap-3 py-4 border-y border-borderDark">
+                            <div>
+                                <span class="text-2xl sm:text-3xl font-black text-white block">10+</span>
+                                <span class="text-[11px] text-slate-400 uppercase tracking-wider font-semibold">Projects Built</span>
+                            </div>
+                            <div>
+                                <span class="text-2xl sm:text-3xl font-black text-white block">S1</span>
+                                <span class="text-[11px] text-slate-400 uppercase tracking-wider font-semibold">PTI Unesa</span>
+                            </div>
+                            <div>
+                                <span class="text-2xl sm:text-3xl font-black text-white block">2026</span>
+                                <span class="text-[11px] text-slate-400 uppercase tracking-wider font-semibold">Batch Active</span>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Saya adalah mahasiswa program studi <strong class="text-white">S1 Pendidikan Teknologi Informasi</strong> di Universitas Negeri Surabaya (Unesa). Saya memiliki ketertarikan tinggi pada pemograman web, pengelolaan basis data, dan pengembangan logika sistem digital. Selain fokus pada akademik, saya juga aktif mengelola proyek konten gaming serta modding server secara independen.
+                        </p>
+
+                        <!-- Student Metadata Box -->
+                        <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                            <div>
+                                <span class="text-slate-500 block">Nama Lengkap</span>
+                                <span class="font-semibold text-slate-200">Moh. Faris Hikama M.</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-500 block">NIM</span>
+                                <span class="font-semibold text-slate-200">26050974054</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-500 block">Program Studi</span>
+                                <span class="font-semibold text-blue-400">S1 Pend. Teknologi Informasi</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Link Button -->
+                        <div class="pt-2">
+                            <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300 transition">
+                                <span>Download My Curriculum Vitae (CV)</span>
+                                <i class="fa-solid fa-arrow-down text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Current Activities -->
+                    <div class="w-full lg:w-1/3 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 space-y-4">
+                        <h3 class="text-xs font-bold tracking-wider text-slate-400 uppercase">Current Focus</h3>
+
+                        <div class="space-y-3">
+                            <div class="p-3 rounded-xl bg-slate-900 border border-borderDark flex items-start gap-3">
+                                <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400">
+                                    <i class="fa-solid fa-laptop-code text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-white">Building</h4>
+                                    <p class="text-[12px] text-slate-400">Web & digital projects</p>
+                                </div>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-slate-900 border border-borderDark flex items-start gap-3">
+                                <div class="p-2 rounded-lg bg-purple-500/10 text-purple-400">
+                                    <i class="fa-solid fa-gamepad text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-white">Exploring</h4>
+                                    <p class="text-[12px] text-slate-400">Minecraft Script API & Gaming</p>
+                                </div>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-slate-900 border border-borderDark flex items-start gap-3">
+                                <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
+                                    <i class="fa-solid fa-book-bookmark text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-white">Learning</h4>
+                                    <p class="text-[12px] text-slate-400">Database & Web Frameworks</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ACHIEVEMENTS SECTION -->
+        <section id="achievements" class="scroll-mt-24">
+            <div class="mb-8">
+                <span class="text-xs font-bold tracking-widest text-blue-400 uppercase">Milestones & Growth</span>
+                <h2 class="text-3xl font-extrabold text-white mt-1">Achievements</h2>
+                <p class="text-slate-400 text-sm mt-1">Pencapaian akademik dan perkembangan skill teknis yang pernah diraih.</p>
+            </div>
+
+                <!-- Achievement 1 -->
+                <div class="bg-cardBg border border-borderDark rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:border-slate-700 transition">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-certificate text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white">TEP (Test of English Proficiency) Certification</h3>
+                            <p class="text-slate-400 text-xs mt-0.5">Pusat Bahasa Unesa • 2026</p>
+                            <p class="text-slate-300 text-xs mt-2">Sertifikasi kemahiran berbahasa Inggris untuk mendukung literasi teknis dan standar profesional akademik.</p>
+                        </div>
+                    </div>
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-950 text-blue-300 border border-blue-800 shrink-0">Certified</span>
+                </div>
+
+                <!-- Achievement 2 -->
+                <div class="bg-cardBg border border-borderDark rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:border-slate-700 transition">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-diagram-project text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white">Database Relational Schema Milestone</h3>
+                            <p class="text-slate-400 text-xs mt-0.5">Lab PTI Unesa • 2026</p>
+                            <p class="text-slate-300 text-xs mt-2">Penyelesaian perancangan dan pengujian skema basis data akademik terintegrasi dengan kueri SQL tingkat lanjut.</p>
+                        </div>
+                    </div>
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700 shrink-0">Completed</span>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CONTACT SECTION (Guidebook Inspired Design) -->
+        <section id="contact" class="scroll-mt-24">
+            <div class="bg-cardBg border border-borderDark rounded-3xl p-6 sm:p-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                    
+                    <!-- Left Header Info -->
+                    <div class="flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold tracking-widest text-blue-400 uppercase">Get In Touch</span>
+                            <h2 class="text-4xl sm:text-5xl font-black text-white mt-2 tracking-tight">
+                                LET'S WORK TOGETHER
+                            </h2>
+                            <p class="text-slate-400 text-sm mt-4 leading-relaxed max-w-md">
+                                Looking for the next problem worth solving. I'm open to opportunities where I can contribute to web development, database management, and technical digital workflows.
+                            </p>
+                        </div>
+
+                        <!-- Direct Social Link Badges -->
+                        <div class="space-y-3 mt-8">
+                            <a href="mailto:farishikama@gmail.com" class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900 hover:bg-slate-800/80 border border-borderDark transition group">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-solid fa-envelope text-blue-400 text-lg"></i>
+                                    <div class="text-left">
+                                        <span class="text-[10px] text-slate-500 block uppercase font-bold">Email</span>
+                                        <span class="text-xs font-medium text-slate-200">hikamamaulana008@gmail.com</span>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-white transition"></i>
+                            </a>
+
+                            <a href="https://github.com" target="_blank" rel="noopener" class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900 hover:bg-slate-800/80 border border-borderDark transition group">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-brands fa-github text-slate-200 text-lg"></i>
+                                    <div class="text-left">
+                                        <span class="text-[10px] text-slate-500 block uppercase font-bold">GitHub</span>
+                                        <span class="text-xs font-medium text-slate-200">github.com/MohFarisHikamaMaulana</span>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-white transition"></i>
+                            </a>
+
+                            <a href="https://linkedin.com" target="_blank" rel="noopener" class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900 hover:bg-slate-800/80 border border-borderDark transition group">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-brands fa-linkedin text-blue-500 text-lg"></i>
+                                    <div class="text-left">
+                                        <span class="text-[10px] text-slate-500 block uppercase font-bold">LinkedIn</span>
+                                        <span class="text-xs font-medium text-slate-200">linkedin.com/in/moh-faris-hikama-maulana</span>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-white transition"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Interactive Message Form -->
+                    <div class="bg-slate-900/80 border border-borderDark rounded-2xl p-6 flex flex-col justify-between">
+                        <h3 class="text-lg font-bold text-white mb-4">Send Me a Message</h3>
+                        
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1">Your Name</label>
+                                <input type="text" required placeholder="John Doe" 
+                                       class="w-full bg-cardBg border border-borderDark rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1">Your Email</label>
+                                <input type="email" required placeholder="john@example.com" 
+                                       class="w-full bg-cardBg border border-borderDark rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1">Message</label>
+                                <textarea rows="4" required placeholder="Hello Faris, I would like to discuss..." 
+                                          class="w-full bg-cardBg border border-borderDark rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition resize-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-3 rounded-xl bg-white hover:bg-slate-200 text-slate-950 font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2">
+                                <span>Send Message</span>
+                                <i class="fa-solid fa-paper-plane text-xs"></i>
+                            </button>
+                        </form>
+
+                        <!-- Custom Message Box Feedback Container (No alert used) -->
+                        <div id="form-feedback" class="hidden mt-4 p-3 rounded-xl text-xs text-center font-medium"></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-borderDark/80 py-8 text-center text-xs text-slate-500">
+        <div class="container mx-auto px-4 max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 Moh. Faris Hikama Maulana. All rights reserved.</p>
+            <p class="text-slate-600">S1 Pendidikan Teknologi Informasi - UNESA</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        // Mobile Navigation Toggle Logic
+        const menuBtn = document.getElementById('menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
+        });
+
+        // Form Submit Handler (Replaces native alerts with clean feedback box)
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const feedback = document.getElementById('form-feedback');
+            
+            feedback.className = "mt-4 p-3 rounded-xl text-xs text-center font-medium bg-emerald-950/80 border border-emerald-800 text-emerald-300 block";
+            feedback.textContent = "Pesan Anda berhasil dikirim! Terima kasih telah menghubungi.";
+
+            document.getElementById('contact-form').reset();
+
+            setTimeout(() => {
+                feedback.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
